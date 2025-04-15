@@ -1,5 +1,10 @@
 #pragma once
 #include "clogic_defs.hpp"
+#include "wires.hpp"
+#include "gates.hpp"
+#include "regs.hpp"
+#include "modules.hpp"
+#include "chips.hpp"
 
 //////////////////////////////////////////////////////////
 //                                                      //
