@@ -1,10 +1,5 @@
 #pragma once
 #include "clogic_defs.hpp"
-#include "wires.hpp"
-#include "gates.hpp"
-#include "regs.hpp"
-#include "modules.hpp"
-#include "chips.hpp"
 
 //////////////////////////////////////////////////////////
 //                                                      //
@@ -21,8 +16,28 @@
 // Future versions of clogic will likely have timing
 // properties associated with each wire.
 class wire{
+public:
+    wire();
+    wire(bool);
+
     bool v; // Value in the wire
-    int wire_num; // Instatiation # of this wire
+    U64 wire_num; // Instatiation # of this wire
+private:
+};
+
+wire::wire() : v{false}{}
+
+wire::wire(bool v_) : v{v_} {}
+
+wire& wire::operator=(const wire& other){
+    if(this != &other){
+        this->v = other.v;
+    }
+}
+
+// A bus is just a group of wires
+class bus{
+
 };
 
 //////////////////////////////////////////////////////////
@@ -34,10 +49,24 @@ class wire{
 // Gates perform operations on wires, returning the value
 // of their operation back to the wire that was set equal
 // to them.
-class gate{
 
-};
+wire orGate(wire in1, wire in2){
+    wire tmp;
+    tmp.v = in1.v | in2.v;
+    return tmp;
+}
 
+wire andGate(wire in1, wire in2){
+    wire tmp;
+    tmp.v = in1.v | in2.v;
+    return tmp;
+}
+
+wire xorGate(wire in1, wire in2){
+    wire tmp;
+    tmp.v = in1.v ^ in2.v;
+    return tmp;
+}
 
 //////////////////////////////////////////////////////////
 //                                                      //
