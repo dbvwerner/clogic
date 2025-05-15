@@ -9,7 +9,5 @@
 typedef uint64_t U64;
 typedef uint32_t U32;
 
-
-
 // Logic States
 enum class states{};

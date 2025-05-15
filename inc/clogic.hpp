@@ -22,16 +22,22 @@ public:
 
     bool v; // Value in the wire
     U64 wire_num; // Instatiation # of this wire
+
+    // Functions
+    wire::wire();
+    wire::wire(bool v_);
+
+    wire& wire::operator=(const wire& w_);
+
 private:
 };
 
 wire::wire() : v{false}{}
-
 wire::wire(bool v_) : v{v_} {}
 
-wire& wire::operator=(const wire& other){
-    if(this != &other){
-        this->v = other.v;
+wire& wire::operator=(const wire& w_){
+    if(this != &w_){
+        this->v = w_.v;
     }
 }
 
@@ -50,23 +56,15 @@ class bus{
 // of their operation back to the wire that was set equal
 // to them.
 
-wire orGate(wire in1, wire in2){
-    wire tmp;
-    tmp.v = in1.v | in2.v;
-    return tmp;
-}
+wire orGate(wire in1, wire in2);
+wire operator|(const wire& w1, const wire& w2);
 
-wire andGate(wire in1, wire in2){
-    wire tmp;
-    tmp.v = in1.v | in2.v;
-    return tmp;
-}
+wire andGate(wire in1, wire in2);
+wire operator&(const wire& w1, const wire& w2);
 
-wire xorGate(wire in1, wire in2){
-    wire tmp;
-    tmp.v = in1.v ^ in2.v;
-    return tmp;
-}
+wire xorGate(wire in1, wire in2);
+wire operator^(const wire& w1, const wire& w2);
+
 
 //////////////////////////////////////////////////////////
 //                                                      //
