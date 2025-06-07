@@ -1,15 +1,14 @@
 # clogic 
-clogic is in progress. Please check back soon.
 
-### Overview
-A lightweight framework for testing hardware at the system level. Designed to be functional at multiple levels of abstraction. End goal is to provide user with a way to design gates using IC chips with minimal effort, and allow for timing and functional testing to be ran at the chip level and at the gate level. 
+## About
+clogic is in progress. Mind the construction tape!
 
-This is not a replacement for Verilog, just simply a fun experiment to see how far I can take my knowledge of C++ and hardware. The syntax should be similar to structural Verilog, but I hope to be able to incorporate some elements of behavioral Verilog as well.
+## Plans
+A framework for designing simple hardware at the system level and logical abstraction layer. Essentially, users will be able to drag and drop pieces of a design such as an entire processor (Z80, Intel 8080, etc.), combine them with logical components (74LS series IC's, etc.), and add external memory. An ideal version of this framework will allow simulation of an entire Microcontroller and 
 
+Code that uses clogic will have a similar style to structural Verilog. 
 
-### Future Plans
-clogic will support a less verbose implementation of wire instantiation. I hope to be able to write code that can track paths between wires, so that a critical path can be observed. The goal will also be to provide a netlist for the user. This will probably require a restructuring of the entire clogic model, and will come in clogic2.
+Future plans also include building up other tools that use clogic. Netlist generators between gates and higher-level components, fault tolerance analyzers, and timing estimators are some applications I have in mind. 
 
-clogic will be built as the back-end for a future project for a graphical logic editor. Its different abstraction levels will be able to let users "zoom in" inside a module, change its internal logic, and then analyze the results of their work.
-
-clogic will provide support for testing with SEU's and statistical analysis of error propagation at a system level. Users will be able to create a design with C++ code by wiring up modules, and then inserting bit flips using the clogic Fault Analyzer (CFA). Statistics such as the average number of affected gates, chance of logic masking, and Hamming distance between expected and actual values in logic and memory modules will be provided.
+## Why C++? Why not Verilog?
+Verilog will not work well with the modularity planned for this project. Additionally, Verilog lacks in having a good framework for library code. With the current plans of the project, C++ seems like a good language for building efficient and modular code. I'm using this an experiment as to how far I can take my knowledge of both C++ and hardware.
